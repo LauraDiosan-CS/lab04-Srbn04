@@ -11,5 +11,10 @@ public:
 	void addGymExercise(GymExercise g);
 	GymExercise* getAll();
 	int getSize();
+	int findElem(GymExercise g);
+	void delElem(GymExercise g);
+	void updateElem(GymExercise g, char* n, int, int, int);
+
+
 };
 

@@ -4,65 +4,65 @@
 #include "GymExercise.h"
 #include "Repo.h"
 #include "Tests.h"
+#include "User_Interfac.h"
 using namespace std;
 
-void  menu() {
-	cout << "Alegeti o optiune: " << endl;
-	cout << "1. Adaugare exercitiu " << endl;
-	cout << "2. Afisare exercitii " << endl;
-	cout << "3.Afisati numarul de persoane din program" << endl;
-	cout << "4. Exit " << endl;
-	cout << endl;
-}
-void PrintMenu()
+
+int main()
 {
-	char name[10];
-	int noOfSeries = {}, noOfReps = {};
-	int weightKg = {};
-	Repo r;
+	tests();
+	Service s;
+	UI ui;
+	char* name;
+	int noOfSeries;
+	int noOfReps;
+	int weightKg;
 	int option;
-	do {
-		menu();
-		while (true) {
+	do 	{
+		ui.printMenu();
+		cout << endl;
+		while (true)
+		{
 
 			cin >> option;
 			if (option == 1) {
-				cout << "Introduceti numele: ";
-				cin >> name;
-				cout << "Introduceti nr.de serii: ";
-				cin >> noOfSeries;
-				cout << "Introduceti nr. de repetari:  ";
-				cin >> noOfReps;
-				cout << "Introduceti greutatea: ";
-				cin >> weightKg;
+				ui.addGymExercise(s);
 				cout << endl;
-
-				GymExercise g(name, noOfSeries, noOfReps, weightKg);
-				r.addGymExercise(g);
-
 				break;
 			}
 			if (option == 2) {
-				for (int i = 0; i < r.getSize(); i++)
-				{
-					cout << "name: " << r.getAll()[i].getName() << endl;
-					cout << "no of series: " << r.getAll()[i].getNoOfSeries() << endl;
-					cout << "no of reps: " << r.getAll()[i].getNoOfReps() << endl;
-					cout << "weight:  " << r.getAll()[i].getWeightKg() << endl;
-					cout << endl;
-				}
+				ui.getAll(s);
+				cout << endl;
 				break;
 
 			}
 			if (option == 3) {
-				cout << "Numarul de exercitii din program este " << r.getSize() << endl;
+				ui.updateGymExercise(s);
 				cout << endl;
 				break;
 			}
 			if (option == 4)
+			{
+				ui.delGymExercise(s);
+				cout << endl;
+				break;
+			}
+			if (option == 5)
+			{
+				ui.filterGymExercises(s);
+				cout << endl;
+				break;
+			}
+			if (option == 6)
+			{
+				ui.deleteExercises(s);
+				cout << endl;
+				break;
+			}
+			if (option == 7)
 				exit(0);
 			else
-				if (option != 1 && option != 2 && option != 3 && option != 4)
+				if (option != 1 && option != 2 && option != 3 && option != 4 && option!=5 && option!=6 && option!=7)
 				{
 					cout << "Ati selectat o optiune inexistenta. ";
 					cout << endl;
@@ -70,20 +70,9 @@ void PrintMenu()
 				}
 
 		}
-	} while (option != 4);
+	} while (option != 7);
 }
 
-int main()
-{
-	//cout << "Serban Zbarcea , semigrupa 314/2. Nu stiu daca apare numele undeva sau doar usernameul dar nu stiu sa il schimb";
-	//cout << endl;
-	testAdd();
-	testGetAllGetSize();
-	testeConstructor();
-	testGetter();
-	testSetter();
-	PrintMenu();
-}
 
 
 

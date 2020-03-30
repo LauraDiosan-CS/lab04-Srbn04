@@ -1,8 +1,10 @@
 #include "Repo.h"
 #include "Tests.h"
+#include "Service.h"
 #include<assert.h>
 #include<iostream>
 Repo r;
+
 
 void testGetter()
 {
@@ -64,5 +66,61 @@ void testeConstructor()
 	g3 = g2;	
 	g1 == g2;
 	cout << "constructor checked !";
+	cout << endl;
+}
+
+void testeRepo()
+{
+	Repo r;
+	char a[10] = "gantere";
+	GymExercise g(a, 10, 5, 10);
+	r.addGymExercise(g); 
+	assert(r.getSize() == 1);
+	assert(r.getAll()[0] == g );
+	assert((g.getNoOfSeries() == 10) && (g.getNoOfReps() == 5) && (g.getWeightKg() == 10));
+	r.delElem(g); 
+	assert(r.getSize() == 0);
+	GymExercise h((char*)"haltere", 3, 5, 100);
+	r.addGymExercise(h);
+	assert(r.getSize() == 1);
+	r.updateElem(h, (char*)"exercitiu", 10, 20, 100);	
+	assert(r.getAll()[0].getWeightKg() == 100);
+	cout << "Repo checked!";
+	cout << endl;
+}
+
+void testsService()
+{
+	Service s;
+	char a[10] = "presa";
+	char b[10] = "brate";
+	GymExercise presa(a, 10, 10, 100);  
+	s.addGymExercise(presa);  
+	GymExercise brate(b, 10, 5, 30);
+	s.addGymExercise(brate);
+	assert(s.getSize() == 2);
+	assert(s.getAll()[0] == presa);
+	assert((strstr(presa.getName(), "presa")) && (presa.getNoOfSeries() == 10) && (presa.getNoOfReps() == 10) && (presa.getWeightKg() == 100));
+	GymExercise result[10];
+	int length = 0;
+	s.filterGymExercises(100, s, s.getSize(), result, length);
+	assert(length == 2);
+	s.filterGymExercises(1600, s, s.getSize(), result, length);
+	assert(length == 1);
+	int n = s.getSize();
+	s.deleteExercises(s, n); 
+	assert(n == 2);
+	cout << "Service checked! ";
+}
+
+void tests()
+{
+	testAdd();
+	testGetAllGetSize();
+	testGetter();
+	testSetter();
+	testeConstructor();
+	testeRepo();
+	testsService();
 	cout << endl;
 }

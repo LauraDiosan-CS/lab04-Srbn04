@@ -1,0 +1,6 @@
+﻿  lab4-5.cpp
+C:\Users\zbarc\Desktop\laboratoare_poo\lab4_oop_ZbarceaSerban_semigrupa314.2\lab4-5.cpp(18,6): warning C4101: 'noOfReps': unreferenced local variable
+C:\Users\zbarc\Desktop\laboratoare_poo\lab4_oop_ZbarceaSerban_semigrupa314.2\lab4-5.cpp(16,8): warning C4101: 'name': unreferenced local variable
+C:\Users\zbarc\Desktop\laboratoare_poo\lab4_oop_ZbarceaSerban_semigrupa314.2\lab4-5.cpp(17,6): warning C4101: 'noOfSeries': unreferenced local variable
+C:\Users\zbarc\Desktop\laboratoare_poo\lab4_oop_ZbarceaSerban_semigrupa314.2\lab4-5.cpp(19,6): warning C4101: 'weightKg': unreferenced local variable
+  lab4-5.vcxproj -> C:\Users\zbarc\Desktop\laboratoare_poo\lab4_oop_ZbarceaSerban_semigrupa314.2\Debug\lab4-5.exe
